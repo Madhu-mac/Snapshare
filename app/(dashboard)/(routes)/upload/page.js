@@ -1,7 +1,11 @@
 import React from 'react'
+import UploadForm from './_components/UploadForm'
 
 export default function Upload() {
   return (
-    <div>Upload</div>
+    <div>
+      <h2></h2>
+      <UploadForm />
+    </div>
   )
 }
