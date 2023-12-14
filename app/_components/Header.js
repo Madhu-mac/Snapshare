@@ -7,7 +7,7 @@ export default function Header() {
     <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 border-b">
       <div className="flex h-16 items-center justify-between">
         <div className="md:flex md:items-center md:gap-12">
-          <Image src='/logo.svg' alt='logo' width={50} height={100}/>
+          <Image src='/logo.png' alt='logo' width={60} height={100}/>
         </div>
   
         <div className="hidden md:block">

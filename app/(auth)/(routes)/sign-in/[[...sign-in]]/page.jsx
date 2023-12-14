@@ -12,7 +12,7 @@ export default function Page() {
       />
 
       <div className="hidden lg:relative lg:block lg:p-12">
-      <Image src='/logo.svg' alt='logo' width={50} height={100}/>
+      <Image src='/logo.png' alt='logo' width={100} height={100}/>
 
         <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
           Welcome to Snapshare 🦑
@@ -49,7 +49,7 @@ export default function Page() {
           </a>
 
           <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-            Welcome to snapShare 🦑
+            Welcome to SnapShare 🦑
           </h1>
 
           <p className="mt-4 leading-relaxed text-gray-500">

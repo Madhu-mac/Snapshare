@@ -30,7 +30,7 @@ export default function Sidenav() {
   return (
     <div className=' shadow-sm border-r h-full'>  
       <div className=' p-5 border-b'> 
-        <Image src='/logo.svg' height={50} width={50} />
+        <Image src='/logo.png' height={100} width={70} />
       </div>
       <div className='flex flex-col float-left w-full'>
       {menuList.map((item, index) =>(
