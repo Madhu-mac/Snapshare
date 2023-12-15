@@ -1,6 +1,7 @@
 "use client"
 import { File, Shield, Upload } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 export default function Sidenav() {
@@ -16,7 +17,7 @@ export default function Sidenav() {
       id: 2,
       name: 'Files',
       icon: File,
-      path: '/upgrade'
+      path: '/files'
     },
     {
       id: 3,
@@ -25,8 +26,8 @@ export default function Sidenav() {
       path: '/upgrade'
     },
   ]
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const [activeIndex, setActiveIndex] = useState(0)
   return (
     <div className=' shadow-sm border-r h-full'>  
       <div className=' p-5 border-b'> 
@@ -38,7 +39,7 @@ export default function Sidenav() {
          hover:bg-gray-100 w-full
           text-gray-500
           ${activeIndex == index ? 'bg-blue-50 text-primary': null}`}
-          onClick={() => setActiveIndex(index)}>
+          onClick={() =>  setActiveIndex(index)}>
           <item.icon />
           <h2>{item.name}</h2>
         </button>

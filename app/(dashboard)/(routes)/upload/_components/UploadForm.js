@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 import Alert from './Alert';
 import Filepreview from './Filepreview';
+import ProgressBar from './ProgressBar';
 
-export default function UploadForm({uploadBtn}) {
+export default function UploadForm({uploadBtn, progress}) {
   const [file , setFile] = useState();
   const [errormsg, setErrormsg]= useState();
   const onFileSelect =(file) =>{
@@ -34,9 +35,10 @@ export default function UploadForm({uploadBtn}) {
     </div> 
     {errormsg ?<Alert msg={errormsg}/>: null}
     {file ?<Filepreview file={file} removeFile={() => setFile(null)}/>: null}
-    <button disabled={!file} className=' p-2 bg-primary text-white
+    
+     {progress>0?<ProgressBar progress={progress} /> : <button disabled={!file} className=' p-2 bg-primary text-white
     w-[30%] rounded-full mt-5 disabled:bg-gray-400'
-     onClick={ async () => uploadBtn(file)}>Upload</button>
+     onClick={ async () => uploadBtn(file)}>Upload</button> }
     </div>
   )
 }
