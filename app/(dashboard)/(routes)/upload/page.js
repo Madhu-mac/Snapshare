@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/s
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useUser } from '@clerk/nextjs';
 import { generateRandomString } from '@/app/_utils/GenerateRandomString';
+import { useRouter } from 'next/navigation';
 
 const storage = getStorage(app);
 const db = getFirestore(app);
@@ -15,6 +16,8 @@ export default function Upload() {
   const {user}= useUser();
   const [progress, setProgress] = useState();
   const [uploadCompleted, setUploadCompleted] = useState(false);
+  const router = useRouter()
+  const [fileDocId, setFileDocId] =useState()
   const uploadFile=(file) => {
     const metadata = {
       contentType: file.type
@@ -50,9 +53,8 @@ export default function Upload() {
         password: '',
         id: docId,
         shortUrl:process.env.NEXT_PUBLIC_BASE_URL+docId
-    }).then(res =>{
-      console.log(res)
-    })
+    });
+    setFileDocId(docId)
   }
 
   useEffect(() =>{
@@ -64,13 +66,14 @@ export default function Upload() {
   }, [progress])
 
   useEffect(() => {
-    uploadCompleted && 
-    setTimeout(() => {
-      setUploadCompleted(false);
-      window.location.reload();
-    }, 2000)
-  }, [uploadCompleted])
-
+    if (uploadCompleted) {
+      setTimeout(() => {
+        setUploadCompleted(false);
+        router.push('/file-preview/' + fileDocId);
+      }, 2000);
+    }
+  }, [uploadCompleted, fileDocId, router]);
+  
 }
   return (
     <div className=' p-5 px-8 md:px-28 text-center'>
