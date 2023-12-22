@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "types": ["cookies"],
     "paths": {
       "@/*": ["./*"]

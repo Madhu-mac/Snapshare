@@ -10,16 +10,20 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.6",
+    "axios": "^1.6.2",
     "firebase": "^10.7.1",
     "lucide-react": "^0.294.0",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "resend": "^2.0.0"
   },
   "devDependencies": {
     "@types/cookies": "^0.7.10",
+    "@types/react": "18.2.45",
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.0",
+    "typescript": "5.3.3"
   }
 }
