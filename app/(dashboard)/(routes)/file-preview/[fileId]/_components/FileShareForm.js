@@ -6,22 +6,29 @@ import React, { useState } from 'react';
 export default function FileShareForm({ file, onPasswordSave }) {
   const [isPasswordEnable, setIsEnablePassword] = useState(false);
   const [password, setPassword] = useState('');
-  const { user}= useUser();
-  const [email, setEmail] =useState();
+  const { user } = useUser();
+  const [email, setEmail] = useState('');
 
-  const sendEmail =() =>{
-    const data ={
+  const sendEmail = () => {
+    const data = {
       emailToSend: email,
-      filename: file?.Name,
+      fileName: file?.Name,
       fileSize: file?.Size,
       fileType: file?.Type,
-      username: user?.fullName,
+      userName: user?.fullName,
       shortUrl: file.ShortUrl
+    };
+
+    if (data.emailToSend) {
+      const emailTo = data.emailToSend.split("@")[0];
+      GlobalApi.SendEmail({ ...data, emailTo }).then(res => {
+        console.log(res);
+      });
+    } else {
+      console.error("Email to send is undefined");
     }
-    GlobalApi.SendEmail(data).then(res =>{
-      console.log(res)
-    })
   }
+    
   return file && (
     <div className='flex flex-col gap-2'>
       <div>
@@ -64,18 +71,22 @@ export default function FileShareForm({ file, onPasswordSave }) {
       ) : null}
 
       <div className=' border rounded-md pt-3 mt-5 p-3'>
-          <label className=' text-[14px] text-gray-500 p-2'> Send File to Email</label>
-          <div className=' border rounded-md p-2 m-2'>
-            <input type='email'
+        <label className=' text-[14px] text-gray-500 p-2'> Send File to Email</label>
+        <div className=' border rounded-md p-2 m-2'>
+          <input
+            type='email'
             placeholder='example@gmail.com'
-            className=' bg-transparent outline-none'/>
-          </div>
-          <button className='border p-2 m-2 disabled:bg-gray-300 
-          bg-primary text-white hover:bg-blue-600 w-full
-            rounded-md'
-            onClick={() => sendEmail()}
-            > Send Email
-          </button>
+            className='bg-transparent outline-none'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}  
+          />
+        </div>
+        <button
+          className='border p-2 m-2 disabled:bg-gray-300 bg-primary text-white hover:bg-blue-600 w-full rounded-md'
+          onClick={() => sendEmail()}
+        >
+          Send Email
+        </button>
       </div>
     </div>
   );
