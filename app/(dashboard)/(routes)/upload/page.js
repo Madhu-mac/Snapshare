@@ -58,7 +58,7 @@ export default function Upload() {
           username: user?.fullName,
           password: '',
           id: docId,
-          shortUrl: process.env.NEXT_PUBLIC_BASE_URL + docId
+          shortUrl: process.env.NEXT_PUBLIC_BASE_URL + "f/" +docId
         });
         console.log("Document successfully written!");
         setFileDocId(docId)

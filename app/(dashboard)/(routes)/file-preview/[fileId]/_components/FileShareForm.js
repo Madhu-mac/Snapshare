@@ -4,22 +4,24 @@ import { Copy } from 'lucide-react';
 import React, { useState } from 'react';
 
 export default function FileShareForm({ file, onPasswordSave }) {
+  console.log('File Object:', file);
   const [isPasswordEnable, setIsEnablePassword] = useState(false);
   const [password, setPassword] = useState('');
   const { user } = useUser();
   const [email, setEmail] = useState('');
+  console.log('User Object:', user);
 
   const sendEmail = () => {
     const data = {
       emailToSend: email,
-      fileName: file?.Name,
-      fileSize: file?.Size,
-      fileType: file?.Type,
+      filename: file?.name,
+      fileSize: file?.size,
+      fileType: file?.type,
       userName: user?.fullName,
-      shortUrl: file.ShortUrl
+      shortUrl: file?.shortUrl
     };
-
-    if (data.emailToSend) {
+    console.log(data)
+    if (data.emailToSend ) {
       const emailTo = data.emailToSend.split("@")[0];
       GlobalApi.SendEmail({ ...data, emailTo }).then(res => {
         console.log(res);
@@ -28,19 +30,22 @@ export default function FileShareForm({ file, onPasswordSave }) {
       console.error("Email to send is undefined");
     }
   }
-    
+  const onCopyClick =() =>{
+    navigator.clipboard.writeText(file.shortUrl);
+  }
+
   return file && (
     <div className='flex flex-col gap-2'>
       <div>
         <label className='text-[14px] text-gray-500'>Short Url</label>
-        <div className='flex gap-5 p-2 border rounded-md justify-center'>
+        <div className='flex gap-5 p-2 border rounded-md justify-center w-full'>
           <input
             type='text'
-            value={file.shortUrl}
+            value={file.shortUrl} 
             disabled
             className='disabled:text-gray-500 bg-transparent outline-none'
           />
-          <Copy className='text-gray-400 hover:text-gray-600' />
+          <Copy className='text-gray-400 hover:text-gray-600' onClick={() => onCopyClick()} />
         </div>
       </div>
       <div className='gap-3 flex mt-5'>

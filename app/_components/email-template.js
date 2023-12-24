@@ -57,15 +57,15 @@ export const EmailTemplate = ({ response }) => {
                   {response.userName} shared a file with you
                 </Heading>
 
-                <Text>
-                  <b>File Name: {response?.fileName}</b>
-                </Text>
-                <Text>
-                  <b>File Size: {response?.fileSize}</b>
-                </Text>
-                <Text>
-                  <b>File Type: {response?.fileType}</b>
-                </Text>
+                    <Text>
+                    <b>File Name: {response?.name}</b>
+                  </Text>
+                  <Text>
+                    <b>File Size: {response?.Size}</b>
+                  </Text>
+                  <Text>
+                    <b>File Type: {response?.Type}</b>
+              </Text>
 
                 <Text>
                   Now you can also share files with SnapShare.
@@ -75,10 +75,12 @@ export const EmailTemplate = ({ response }) => {
                 </Text>
               </Column>
             </Row>
-
-            <Row>
+            
+            <a href={response?.shortUrl}>Click here to Download</a>
+            <Row style={{ paddingTop: '0'}}>
               <Column>
-                <Button>
+                <Button style={Button}
+                href={response?.shortUrl}>
                   Click here to Download
                 </Button>
               </Column>
@@ -90,7 +92,7 @@ export const EmailTemplate = ({ response }) => {
           </Section>
 
           <Text style={{ textAlign: 'center', fontSize: 12, color: 'rgb(0,0,0, 0.7)' }}>
-            © 2022 | Yelp Inc., 350 Mission Street, San Francisco, CA 94105, U.S.A. | www.yelp.com
+            © 2022 | snapShare Inc., 
           </Text>
         </Container>
       </Body>

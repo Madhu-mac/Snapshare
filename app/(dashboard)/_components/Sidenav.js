@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
-export default function Sidenav() {
+export default function Sidenav({closeSideBar}) {
   const menuList =[
     
     {
@@ -39,7 +39,7 @@ export default function Sidenav() {
          hover:bg-gray-100 w-full
           text-gray-500
           ${activeIndex == index ? 'bg-blue-50 text-primary': null}`}
-          onClick={() =>  setActiveIndex(index)}>
+          onClick={() =>  {setActiveIndex(index); closeSideBar()}}>
           <item.icon />
           <h2>{item.name}</h2>
         </button>

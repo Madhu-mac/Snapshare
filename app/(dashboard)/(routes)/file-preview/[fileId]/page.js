@@ -29,6 +29,7 @@ export default function Filepreview({params}) {
       console.log("No such document!");
     }
   }
+  
   const onPasswordSave= async(password) => {
     const docRef = doc(db, 'uploadedFile', params?.fileId)
     await updateDoc(docRef , {
