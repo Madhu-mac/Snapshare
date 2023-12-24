@@ -37,7 +37,7 @@ export default function Header() {
           <div className="sm:flex sm:gap-4">
             <a
               className="rounded-m bg-primary px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-blue-900"
-              href="/files"
+              href="/upload"
             >
               Get Started
             </a>

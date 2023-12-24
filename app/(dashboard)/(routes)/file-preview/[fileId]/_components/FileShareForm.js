@@ -11,25 +11,31 @@ export default function FileShareForm({ file, onPasswordSave }) {
   const [email, setEmail] = useState('');
   console.log('User Object:', user);
 
-  const sendEmail = () => {
-    const data = {
-      emailToSend: email,
-      filename: file?.name,
-      fileSize: file?.size,
-      fileType: file?.type,
-      userName: user?.fullName,
-      shortUrl: file?.shortUrl
-    };
-    console.log(data)
-    if (data.emailToSend ) {
-      const emailTo = data.emailToSend.split("@")[0];
-      GlobalApi.SendEmail({ ...data, emailTo }).then(res => {
-        console.log(res);
-      });
-    } else {
-      console.error("Email to send is undefined");
+  const sendEmail = async () => {
+    try {
+      const data = {
+        emailToSend: email,
+        filename: file?.name,
+        fileSize: file?.size,
+        fileType: file?.type,
+        userName: user?.fullName,
+        shortUrl: file?.shortUrl
+      };
+  
+      console.log('Data to be sent:', data);
+  
+      if (data.emailToSend) {
+        const emailTo = data.emailToSend.split("@")[0];
+        const res = await GlobalApi.SendEmail({ ...data, emailTo });
+        console.log('Email sending response:', res);
+      } else {
+        console.error("Email data is incomplete");
+      }
+    } catch (error) {
+      console.error('Error sending email:', error.message);
     }
   }
+  
   const onCopyClick =() =>{
     navigator.clipboard.writeText(file.shortUrl);
   }

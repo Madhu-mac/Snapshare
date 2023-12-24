@@ -28,9 +28,9 @@ export const EmailTemplate = ({ response }) => {
       <Preview> snapShare recent login</Preview>
       <Body style={mainStyle}>
         <Container>
-          <Section>
+          {/* <Section>
             <Img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Ss-_DpyLLIrfLQJfQp8zzfpdpDWAgpPn4Q&usqp=CAU`} />
-          </Section>
+          </Section> */}
 
           <Section>
             <Img width={620} src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Ss-_DpyLLIrfLQJfQp8zzfpdpDWAgpPn4Q&usqp=CAU`} />
@@ -57,7 +57,7 @@ export const EmailTemplate = ({ response }) => {
                   {response.userName} shared a file with you
                 </Heading>
 
-                    <Text>
+                    {/* <Text>
                     <b>File Name: {response?.name}</b>
                   </Text>
                   <Text>
@@ -65,7 +65,7 @@ export const EmailTemplate = ({ response }) => {
                   </Text>
                   <Text>
                     <b>File Type: {response?.Type}</b>
-              </Text>
+              </Text> */}
 
                 <Text>
                   Now you can also share files with SnapShare.
@@ -76,8 +76,8 @@ export const EmailTemplate = ({ response }) => {
               </Column>
             </Row>
             
-            <a href={response?.shortUrl}>Click here to Download</a>
-            <Row style={{ paddingTop: '0'}}>
+            {/* <a href={response?.shortUrl}>Click here to Download</a> */}
+            <Row style={{ padding: "2px", margin: "2px"}}>
               <Column>
                 <Button style={Button}
                 href={response?.shortUrl}>
@@ -87,9 +87,9 @@ export const EmailTemplate = ({ response }) => {
             </Row>
           </Section>
 
-          <Section style={{ padding: '45px 0 0 0' }}>
+          {/* <Section style={{ padding: '45px 0 0 0' }}>
             <Img width={620} src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Ss-_DpyLLIrfLQJfQp8zzfpdpDWAgpPn4Q&usqp=CAU`} />
-          </Section>
+          </Section> */}
 
           <Text style={{ textAlign: 'center', fontSize: 12, color: 'rgb(0,0,0, 0.7)' }}>
             © 2022 | snapShare Inc., 
