@@ -31,7 +31,7 @@ export default function Sidenav({ closeSideBar }) {
   return (
     <div className=' shadow-sm border-r h-full'>
       <div className=' p-5 border-b'>
-        <Image src='/logo.png' height={100} width={70} />
+        <Image src='/logo.png' alt='image' height={100} width={70} />
       </div>
       <div className='flex flex-col float-left w-full'>
         {menuList.map((item, index) => (

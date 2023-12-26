@@ -28,6 +28,8 @@ export default function FileShareForm({ file, onPasswordSave }) {
         const emailTo = data.emailToSend.split("@")[0];
         const res = await GlobalApi.SendEmail({ ...data, emailTo });
         console.log('Email sending response:', res);
+
+        window.alert('Email sent successfully!');
       } else {
         console.error("Email data is incomplete");
       }

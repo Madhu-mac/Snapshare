@@ -25,6 +25,7 @@ export default function Fileinfo({ file }) {
           width={200}
           height={200}
           className='h-[200px] rounded-md object-contain'
+          alt='image'
         />
       <div className=''>
         <h2>{file.filename}</h2>
